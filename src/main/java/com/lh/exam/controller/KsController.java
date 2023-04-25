@@ -2,7 +2,7 @@ package com.lh.exam.controller;
 
 import com.lh.exam.api.CommonResult;
 import com.lh.exam.api.JWTutil;
-import com.lh.exam.entity.ks;
+import com.lh.exam.entity.Ks;
 import com.lh.exam.service.KsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +16,8 @@ public class KsController {
     private KsService ksService;
     @RequestMapping("/login")
     @ResponseBody
-    public CommonResult ksLogin(@RequestBody ks k){
-        ks k2 = ksService.selectKsForNumber(k.getKsNumber());
+    public CommonResult ksLogin(@RequestBody Ks k){
+        Ks k2 = ksService.selectKsForNumber(k.getKsNumber());
         if(k2==null){
             return CommonResult.failed("用户不存在");
         }
@@ -29,9 +29,9 @@ public class KsController {
 
     @ResponseBody
     @RequestMapping("/register")
-    public CommonResult ksRegister(@RequestBody ks newKs){
+    public CommonResult ksRegister(@RequestBody Ks newKs){
         System.out.println(newKs.toString());
-        ks ks = ksService.selectKsForNumber(newKs.getKsNumber());
+        Ks ks = ksService.selectKsForNumber(newKs.getKsNumber());
         if (ks!=null){
             return CommonResult.failed("该考试已注册！");
         }

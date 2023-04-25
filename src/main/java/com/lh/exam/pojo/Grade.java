@@ -1,17 +1,15 @@
-package com.lh.exam.entity;
+package com.lh.exam.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-/**
- * 实体层 - 考生
- */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ks {
-    int ksId;
-    String ksName;
+public class Grade {
     String ksNumber;
-    String ksPassword;
+    String ksName;
+    String examState;
+    int examScore;
 }

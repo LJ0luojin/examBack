@@ -1,8 +1,9 @@
 package com.lh.exam.service;
 
-import com.lh.exam.entity.ks;
+import com.lh.exam.entity.Ks;
 
 public interface KsService {
-    ks selectKsForNumber(String ksNumber);
-    int insertKs(ks newKs);
+    Ks selectKsForNumber(String ksNumber);
+    Ks selectKsForId(int ksId);
+    int insertKs(Ks newKs);
 }

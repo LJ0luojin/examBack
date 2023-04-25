@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lh.exam.mapper.KgMapper">
+    <resultMap id="kg" type="com.lh.exam.entity.Kg">
+        <id column="kg_id" property="kgId"/>
+        <result column="kg_username" property="kgUsername"/>
+        <result column="kg_password" property="kgPassword"/>
+    </resultMap>
+    <select id="selectKgForUsername" resultMap="kg">
+        select * from exam_kg where  kg_username = #{kgUsername}
+    </select>
+
+
+</mapper>

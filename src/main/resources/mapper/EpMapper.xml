@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lh.exam.mapper.EpMapper">
+    <resultMap id="Ep" type="com.lh.exam.entity.Ep">
+        <id property="epId" column="ep_id"/>
+        <result property="epName" column="ep_name"/>
+        <result property="epStart" column="ep_start"/>
+        <result property="epEnd" column="ep_end"/>
+        <result property="epKsSum" column="ep_ks_sum"/>
+        <result property="epState" column="ep_state"/>
+    </resultMap>
+
+    <update id="updateStateToIsUsed">
+        UPDATE `exam_system`.`exam_ep` SET `ep_state` = '已发布' WHERE (`ep_id` = #{epId});
+    </update>
+    <delete id="deletePaper">
+        DELETE exam_ep,exam FROM exam_ep left join exam on exam_ep.ep_id = exam.ep_id where exam_ep.ep_id = #{epId}
+    </delete>
+    <select id="getTableData" resultMap="Ep">
+        select * from exam_ep
+    </select>
+    <insert id="createPaper" parameterType="com.lh.exam.entity.Ep">
+        <selectKey keyColumn="ep_id" keyProperty="epId" order="AFTER" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into exam_ep (ep_name,ep_state) values (#{epName},"未发布")
+    </insert>
+</mapper>

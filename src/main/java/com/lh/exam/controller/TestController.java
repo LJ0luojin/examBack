@@ -1,7 +1,7 @@
 package com.lh.exam.controller;
 
 import com.lh.exam.api.CommonResult;
-import com.lh.exam.entity.ks;
+import com.lh.exam.entity.Ks;
 import com.lh.exam.service.KsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +17,9 @@ public class TestController {
     private KsService ksService;
     @ResponseBody
     @RequestMapping(value = "/1", method = RequestMethod.POST)
-    public CommonResult test(@RequestBody ks k){
+    public CommonResult test(@RequestBody Ks k){
         System.out.println(k.toString());
-        ks k2 = ksService.selectKsForNumber(k.getKsNumber());
+        Ks k2 = ksService.selectKsForNumber(k.getKsNumber());
         System.out.println(k2);
         if(k2==null){
             return CommonResult.failed("用户不存在");
@@ -31,9 +31,9 @@ public class TestController {
     }
     @ResponseBody
     @RequestMapping("/2")
-    public CommonResult testInsert(ks newKs){
+    public CommonResult testInsert(Ks newKs){
         System.out.println(newKs.toString());
-        ks ks = ksService.selectKsForNumber(newKs.getKsNumber());
+        Ks ks = ksService.selectKsForNumber(newKs.getKsNumber());
         if (ks!=null){
             return CommonResult.failed("该考试已注册！");
         }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lh.exam.mapper.ExamMapper">
+    <resultMap id="Exam" type="com.lh.exam.entity.Exam">
+        <id property="examId" column="exam_id"/>
+        <result property="ksId" column="ks_id"/>
+        <result property="epId" column="ep_id"/>
+        <result property="examState" column="exam_state"/>
+        <result property="examScore" column="exam_score"/>
+    </resultMap>
+    <select id="countJoinEpKs" resultType="int">
+        select COUNT(*) from exam where ep_id = #{epId}
+    </select>
+    <select id="getGradeList" resultMap="Exam">
+        select * from exam where ep_id = #{epId}
+    </select>
+</mapper>

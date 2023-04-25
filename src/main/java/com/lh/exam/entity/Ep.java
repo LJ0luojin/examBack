@@ -2,6 +2,7 @@ package com.lh.exam.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -12,10 +13,12 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ep {
+public class Ep {
     int epId;
     String epName;
+    String epTime;
     Date epStart;
     Date epEnd;
     int epKsSum;
+    String epState;
 }

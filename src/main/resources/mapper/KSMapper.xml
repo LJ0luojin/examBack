@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lh.exam.mapper.KSMapper">
-    <resultMap id="ks" type="com.lh.exam.entity.ks">
+    <resultMap id="ks" type="com.lh.exam.entity.Ks">
         <id column="ks_id" property="ksId"/>
         <result property="ksName" column="ks_name"/>
         <result property="ksNumber" column="ks_number"/>
@@ -14,6 +14,9 @@
     </insert>
     <select id="selectKsForNumber" resultMap="ks">
         select * from exam_ks where ks_number= #{ksNumber}
+    </select>
+    <select id="selectKsForId" resultMap="ks">
+        select ks_number,ks_name from exam_ks where ks_id = #{ksId}
     </select>
 
 

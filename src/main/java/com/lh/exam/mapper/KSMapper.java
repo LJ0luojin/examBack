@@ -1,10 +1,11 @@
 package com.lh.exam.mapper;
 
-import com.lh.exam.entity.ks;
+import com.lh.exam.entity.Ks;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface KSMapper {
-    ks selectKsForNumber(String ksNumber);
-    int insertKs(ks newKs);
+    Ks selectKsForNumber(String ksNumber);
+    Ks selectKsForId(int ksId);
+    int insertKs(Ks newKs);
 }
