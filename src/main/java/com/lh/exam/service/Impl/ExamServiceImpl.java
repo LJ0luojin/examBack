@@ -3,7 +3,7 @@ package com.lh.exam.service.Impl;
 import com.lh.exam.entity.Exam;
 import com.lh.exam.entity.Ks;
 import com.lh.exam.mapper.ExamMapper;
-import com.lh.exam.mapper.KSMapper;
+import com.lh.exam.mapper.KsMapper;
 import com.lh.exam.pojo.Grade;
 import com.lh.exam.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class ExamServiceImpl implements ExamService {
     @Autowired
     private ExamMapper examMapper;
     @Autowired
-    private KSMapper ksMapper;
+    private KsMapper ksMapper;
     @Override
     public int countJoinEpKs(int epId) {
         return examMapper.countJoinEpKs(epId);

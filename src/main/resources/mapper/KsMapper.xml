@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lh.exam.mapper.KSMapper">
+<mapper namespace="com.lh.exam.mapper.KsMapper">
     <resultMap id="ks" type="com.lh.exam.entity.Ks">
         <id column="ks_id" property="ksId"/>
         <result property="ksName" column="ks_name"/>
@@ -17,6 +17,15 @@
     </select>
     <select id="selectKsForId" resultMap="ks">
         select ks_number,ks_name from exam_ks where ks_id = #{ksId}
+    </select>
+    <select id="selectKs" resultMap="ks" parameterType="list">
+        SELECT *
+        FROM exam_ks
+        WHERE ks_name LIKE CONCAT('%', #{selectks}, '%')
+           OR ks_number LIKE CONCAT('%', #{selectks}, '%')
+    </select>
+    <select id="selectAllKs" resultMap="ks" parameterType="list">
+        select ks_id,ks_name,ks_number from exam_ks
     </select>
 
 

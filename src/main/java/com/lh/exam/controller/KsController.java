@@ -5,10 +5,9 @@ import com.lh.exam.api.JWTutil;
 import com.lh.exam.entity.Ks;
 import com.lh.exam.service.KsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class KsController {
@@ -41,5 +40,21 @@ public class KsController {
         }else{
             return CommonResult.success("注册成功");
         }
+    }
+
+    @RequestMapping(value = "/selectks",method = RequestMethod.GET)
+    public CommonResult selectKs(String selectks){
+        List<Ks> ks = ksService.selectKs(selectks);
+        for (Ks k : ks) {
+            System.out.println(k);
+        }
+        return CommonResult.success(ks,"成功");
+    }
+    @ResponseBody
+    @RequestMapping("/selectallks")
+    public CommonResult selectAllKs(){
+        List<Ks> allKs = ksService.selectAllKs();
+        return CommonResult.success(allKs,"成功");
+
     }
 }
